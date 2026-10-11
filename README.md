@@ -1,16 +1,12 @@
 # Single-cycle processor on Arty A7
 
-Hello, here is my original processor I made, a single-cycle processor using a custom subset of RISC-V, and runs it from a real Arty A7-100T (`xc7a100tcsg324-1`). All the rtl files are originally made in my class, and I developed the wrapper after completing the course.
-There are two versions, the 50MHz and 100 MHz versions. More information in is the versions section.
+Hello! This is my single-cycle processor that I originally developed using a custom subset of the RISC-V instruction set. I first designed the processor RTL for my digital systems course, then continued working on it after the class to get it running on a physical Arty A7-100T FPGA (xc7a100tcsg324-1). This repository includes two versions: the main 50 MHz version and an experimental 100 MHz version. More information about their differences can be found in the Versions section below.
 
-I will make a little disclaimer here, a little bit of AI was used for the 100MHz version and organizing this repo. Other than that, everything about the hardware design is my own. I want to be honest with my work. I would recommend reading `PROVENANCE.md` to see what was specifically used since it wasn't a whole lot.
+I also want to be transparent about the development process. I used some AI assistance for parts of the 100 MHz version, and organizing the repository. The original processor RTL was developed during my coursework. For a more detailed breakdown of what was AI-assisted, I recommend reading PROVENANCE.md.
 
-The setup instructions here are for the 50 MHz version and runs it from a real 50 MHz internal clock using the Arty A7-100T (`xc7a100tcsg324-1`).
-The board input remains 100 MHz; the MMCM in `arty_a7_top.v` converts it to 50 MHz. 
+The main version runs at 50 MHz using the Arty A7's 100 MHz input clock, which is converted internally through the MMCM in arty_a7_top.v. The demonstration runs a predefined 20-instruction program, but you can modify the instruction memory in rtl/dataPath.v to run other programs using the supported RISC-V instructions. The program/lab_program.hex file serves as a reference copy of the demonstration program and is not loaded automatically.
 
-The demo executes a predefined 20-instruction program. To run a different program using the supported instructions, edit the InstMem module in rtl/dataPath.v and rebuild the bitstream. program/lab_program.hex contains a reference copy of the demo instructions so it is not loaded automatically.
-
-The project provides a small, inspectable example of how instruction decoding, registers, arithmetic, memory, and board controls work together in an RTL processor. This project is designed to be simple to help others understand basic rtl cpu design and how it flows. 
+My goal with this project was to create a relatively simple and understandable example of how a processor works at the RTL level. It demonstrates how instruction decoding, registers, arithmetic, memory, and FPGA board controls work together to execute instructions on real hardware.
 
 ## Versions
 
