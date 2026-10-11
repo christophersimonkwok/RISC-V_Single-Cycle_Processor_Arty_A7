@@ -1,0 +1,18 @@
+/build/
+*.jou
+*.log
+*.vcd
+*.wdb
+*.vvp
+*.xpr
+*.runs/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+.Xil/
+__pycache__/
+
+# Generated hardware files are local build artifacts.
+*.bit
+*.dcp

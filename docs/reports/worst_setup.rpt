@@ -1,0 +1,896 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465
+| Host         : VENGEANCE running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type max -max_paths 10 -nworst 1 -file build/reports/worst_setup.rpt
+| Design       : arty_a7_top
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             5.185ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[9][22]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.417ns  (logic 3.062ns (21.239%)  route 11.355ns (78.761%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.140ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.509ns = ( 18.491 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.728    11.682    core/data_path/pc_inst/p_12_in
+    SLICE_X88Y83         LUT6 (Prop_lut6_I4_O)        0.124    11.806 r  core/data_path/pc_inst/register_file[9][31]_i_1/O
+                         net (fo=32, routed)          1.801    13.607    core/data_path/rf_inst/register_file_reg[9][31]_0[0]
+    SLICE_X70Y91         FDCE                                         r  core/data_path/rf_inst/register_file_reg[9][22]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.511    18.491    core/data_path/rf_inst/clk50
+    SLICE_X70Y91         FDCE                                         r  core/data_path/rf_inst/register_file_reg[9][22]/C
+                         clock pessimism              0.559    19.050    
+                         clock uncertainty           -0.089    18.962    
+    SLICE_X70Y91         FDCE (Setup_fdce_C_CE)      -0.169    18.793    core/data_path/rf_inst/register_file_reg[9][22]
+  -------------------------------------------------------------------
+                         required time                         18.793    
+                         arrival time                         -13.607    
+  -------------------------------------------------------------------
+                         slack                                  5.185    
+
+Slack (MET) :             5.273ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[2][21]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.330ns  (logic 3.062ns (21.368%)  route 11.268ns (78.632%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.139ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.508ns = ( 18.492 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.674    11.628    core/data_path/pc_inst/p_12_in
+    SLICE_X87Y83         LUT6 (Prop_lut6_I4_O)        0.124    11.752 r  core/data_path/pc_inst/register_file[2][31]_i_1/O
+                         net (fo=32, routed)          1.768    13.520    core/data_path/rf_inst/register_file_reg[2][31]_0[0]
+    SLICE_X70Y93         FDCE                                         r  core/data_path/rf_inst/register_file_reg[2][21]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.512    18.492    core/data_path/rf_inst/clk50
+    SLICE_X70Y93         FDCE                                         r  core/data_path/rf_inst/register_file_reg[2][21]/C
+                         clock pessimism              0.559    19.051    
+                         clock uncertainty           -0.089    18.963    
+    SLICE_X70Y93         FDCE (Setup_fdce_C_CE)      -0.169    18.794    core/data_path/rf_inst/register_file_reg[2][21]
+  -------------------------------------------------------------------
+                         required time                         18.794    
+                         arrival time                         -13.520    
+  -------------------------------------------------------------------
+                         slack                                  5.273    
+
+Slack (MET) :             5.387ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[9][11]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.212ns  (logic 3.062ns (21.546%)  route 11.150ns (78.454%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.144ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.513ns = ( 18.487 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.728    11.682    core/data_path/pc_inst/p_12_in
+    SLICE_X88Y83         LUT6 (Prop_lut6_I4_O)        0.124    11.806 r  core/data_path/pc_inst/register_file[9][31]_i_1/O
+                         net (fo=32, routed)          1.596    13.402    core/data_path/rf_inst/register_file_reg[9][31]_0[0]
+    SLICE_X70Y85         FDCE                                         r  core/data_path/rf_inst/register_file_reg[9][11]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.507    18.487    core/data_path/rf_inst/clk50
+    SLICE_X70Y85         FDCE                                         r  core/data_path/rf_inst/register_file_reg[9][11]/C
+                         clock pessimism              0.559    19.046    
+                         clock uncertainty           -0.089    18.958    
+    SLICE_X70Y85         FDCE (Setup_fdce_C_CE)      -0.169    18.789    core/data_path/rf_inst/register_file_reg[9][11]
+  -------------------------------------------------------------------
+                         required time                         18.789    
+                         arrival time                         -13.402    
+  -------------------------------------------------------------------
+                         slack                                  5.387    
+
+Slack (MET) :             5.416ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[2][22]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.185ns  (logic 3.062ns (21.586%)  route 11.123ns (78.414%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.141ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.510ns = ( 18.490 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.674    11.628    core/data_path/pc_inst/p_12_in
+    SLICE_X87Y83         LUT6 (Prop_lut6_I4_O)        0.124    11.752 r  core/data_path/pc_inst/register_file[2][31]_i_1/O
+                         net (fo=32, routed)          1.624    13.376    core/data_path/rf_inst/register_file_reg[2][31]_0[0]
+    SLICE_X70Y89         FDCE                                         r  core/data_path/rf_inst/register_file_reg[2][22]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.510    18.490    core/data_path/rf_inst/clk50
+    SLICE_X70Y89         FDCE                                         r  core/data_path/rf_inst/register_file_reg[2][22]/C
+                         clock pessimism              0.559    19.049    
+                         clock uncertainty           -0.089    18.961    
+    SLICE_X70Y89         FDCE (Setup_fdce_C_CE)      -0.169    18.792    core/data_path/rf_inst/register_file_reg[2][22]
+  -------------------------------------------------------------------
+                         required time                         18.792    
+                         arrival time                         -13.376    
+  -------------------------------------------------------------------
+                         slack                                  5.416    
+
+Slack (MET) :             5.446ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[2][11]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.117ns  (logic 3.062ns (21.690%)  route 11.055ns (78.310%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.143ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.512ns = ( 18.488 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.674    11.628    core/data_path/pc_inst/p_12_in
+    SLICE_X87Y83         LUT6 (Prop_lut6_I4_O)        0.124    11.752 r  core/data_path/pc_inst/register_file[2][31]_i_1/O
+                         net (fo=32, routed)          1.555    13.307    core/data_path/rf_inst/register_file_reg[2][31]_0[0]
+    SLICE_X71Y87         FDCE                                         r  core/data_path/rf_inst/register_file_reg[2][11]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.508    18.488    core/data_path/rf_inst/clk50
+    SLICE_X71Y87         FDCE                                         r  core/data_path/rf_inst/register_file_reg[2][11]/C
+                         clock pessimism              0.559    19.047    
+                         clock uncertainty           -0.089    18.959    
+    SLICE_X71Y87         FDCE (Setup_fdce_C_CE)      -0.205    18.754    core/data_path/rf_inst/register_file_reg[2][11]
+  -------------------------------------------------------------------
+                         required time                         18.754    
+                         arrival time                         -13.307    
+  -------------------------------------------------------------------
+                         slack                                  5.446    
+
+Slack (MET) :             5.449ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[15][21]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.119ns  (logic 3.062ns (21.688%)  route 11.057ns (78.312%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.139ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.508ns = ( 18.492 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.577    11.532    core/data_path/pc_inst/p_12_in
+    SLICE_X86Y84         LUT6 (Prop_lut6_I2_O)        0.124    11.656 r  core/data_path/pc_inst/register_file[15][31]_i_1/O
+                         net (fo=32, routed)          1.653    13.309    core/data_path/rf_inst/register_file_reg[15][31]_0[0]
+    SLICE_X71Y94         FDCE                                         r  core/data_path/rf_inst/register_file_reg[15][21]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.512    18.492    core/data_path/rf_inst/clk50
+    SLICE_X71Y94         FDCE                                         r  core/data_path/rf_inst/register_file_reg[15][21]/C
+                         clock pessimism              0.559    19.051    
+                         clock uncertainty           -0.089    18.963    
+    SLICE_X71Y94         FDCE (Setup_fdce_C_CE)      -0.205    18.758    core/data_path/rf_inst/register_file_reg[15][21]
+  -------------------------------------------------------------------
+                         required time                         18.758    
+                         arrival time                         -13.309    
+  -------------------------------------------------------------------
+                         slack                                  5.449    
+
+Slack (MET) :             5.451ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[15][22]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.151ns  (logic 3.062ns (21.638%)  route 11.089ns (78.362%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.140ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.509ns = ( 18.491 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.577    11.532    core/data_path/pc_inst/p_12_in
+    SLICE_X86Y84         LUT6 (Prop_lut6_I2_O)        0.124    11.656 r  core/data_path/pc_inst/register_file[15][31]_i_1/O
+                         net (fo=32, routed)          1.686    13.342    core/data_path/rf_inst/register_file_reg[15][31]_0[0]
+    SLICE_X70Y92         FDCE                                         r  core/data_path/rf_inst/register_file_reg[15][22]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.511    18.491    core/data_path/rf_inst/clk50
+    SLICE_X70Y92         FDCE                                         r  core/data_path/rf_inst/register_file_reg[15][22]/C
+                         clock pessimism              0.559    19.050    
+                         clock uncertainty           -0.089    18.962    
+    SLICE_X70Y92         FDCE (Setup_fdce_C_CE)      -0.169    18.793    core/data_path/rf_inst/register_file_reg[15][22]
+  -------------------------------------------------------------------
+                         required time                         18.793    
+                         arrival time                         -13.342    
+  -------------------------------------------------------------------
+                         slack                                  5.451    
+
+Slack (MET) :             5.498ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[9][6]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.062ns  (logic 3.062ns (21.774%)  route 11.000ns (78.226%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.146ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.515ns = ( 18.485 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.728    11.682    core/data_path/pc_inst/p_12_in
+    SLICE_X88Y83         LUT6 (Prop_lut6_I4_O)        0.124    11.806 r  core/data_path/pc_inst/register_file[9][31]_i_1/O
+                         net (fo=32, routed)          1.446    13.253    core/data_path/rf_inst/register_file_reg[9][31]_0[0]
+    SLICE_X71Y83         FDCE                                         r  core/data_path/rf_inst/register_file_reg[9][6]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.505    18.485    core/data_path/rf_inst/clk50
+    SLICE_X71Y83         FDCE                                         r  core/data_path/rf_inst/register_file_reg[9][6]/C
+                         clock pessimism              0.559    19.044    
+                         clock uncertainty           -0.089    18.956    
+    SLICE_X71Y83         FDCE (Setup_fdce_C_CE)      -0.205    18.751    core/data_path/rf_inst/register_file_reg[9][6]
+  -------------------------------------------------------------------
+                         required time                         18.751    
+                         arrival time                         -13.253    
+  -------------------------------------------------------------------
+                         slack                                  5.498    
+
+Slack (MET) :             5.577ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[5][22]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        14.024ns  (logic 3.062ns (21.834%)  route 10.962ns (78.166%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.141ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.510ns = ( 18.490 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.673    11.627    core/data_path/pc_inst/p_12_in
+    SLICE_X88Y87         LUT6 (Prop_lut6_I4_O)        0.124    11.751 r  core/data_path/pc_inst/register_file[5][31]_i_1/O
+                         net (fo=32, routed)          1.463    13.214    core/data_path/rf_inst/register_file_reg[5][31]_0[0]
+    SLICE_X70Y90         FDCE                                         r  core/data_path/rf_inst/register_file_reg[5][22]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.510    18.490    core/data_path/rf_inst/clk50
+    SLICE_X70Y90         FDCE                                         r  core/data_path/rf_inst/register_file_reg[5][22]/C
+                         clock pessimism              0.559    19.049    
+                         clock uncertainty           -0.089    18.961    
+    SLICE_X70Y90         FDCE (Setup_fdce_C_CE)      -0.169    18.792    core/data_path/rf_inst/register_file_reg[5][22]
+  -------------------------------------------------------------------
+                         required time                         18.792    
+                         arrival time                         -13.214    
+  -------------------------------------------------------------------
+                         slack                                  5.577    
+
+Slack (MET) :             5.589ns  (required time - arrival time)
+  Source:                 core/data_path/pc_inst/q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/data_path/rf_inst/register_file_reg[19][21]/CE
+                            (rising edge-triggered cell FDCE clocked by clk50_unbuffered  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk50_unbuffered
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk50_unbuffered rise@20.000ns - clk50_unbuffered rise@0.000ns)
+  Data Path Delay:        13.977ns  (logic 3.062ns (21.907%)  route 10.915ns (78.093%))
+  Logic Levels:           13  (CARRY4=2 LUT2=1 LUT5=1 LUT6=7 MUXF7=1 MUXF8=1)
+  Clock Path Skew:        -0.140ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.509ns = ( 18.491 - 20.000 ) 
+    Source Clock Delay      (SCD):    -0.810ns
+    Clock Pessimism Removal (CPR):    0.559ns
+  Clock Uncertainty:      0.089ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.163ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk50_unbuffered rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clock_input/O
+                         net (fo=1, routed)           1.233     2.715    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  processor_clock/O
+                         net (fo=840, routed)         1.730    -0.810    core/data_path/pc_inst/clk50
+    SLICE_X86Y89         FDRE                                         r  core/data_path/pc_inst/q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X86Y89         FDRE (Prop_fdre_C_Q)         0.456    -0.354 r  core/data_path/pc_inst/q_reg[3]/Q
+                         net (fo=54, routed)          1.511     1.157    core/data_path/pc_inst/pc[3]
+    SLICE_X88Y82         LUT6 (Prop_lut6_I1_O)        0.124     1.281 r  core/data_path/pc_inst/mem_reg_0_127_0_0_i_35/O
+                         net (fo=161, routed)         2.464     3.745    core/data_path/rf_inst/rg_rd_addr2_wire[0]
+    SLICE_X71Y93         LUT6 (Prop_lut6_I4_O)        0.124     3.869 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_8/O
+                         net (fo=1, routed)           0.000     3.869    core/data_path/rf_inst/mem_reg_0_127_21_21_i_8_n_0
+    SLICE_X71Y93         MUXF7 (Prop_muxf7_I1_O)      0.245     4.114 r  core/data_path/rf_inst/mem_reg_0_127_21_21_i_4/O
+                         net (fo=2, routed)           0.000     4.114    core/data_path/rf_inst/mem_reg_0_127_21_21_i_4_n_0
+    SLICE_X71Y93         MUXF8 (Prop_muxf8_I0_O)      0.104     4.218 r  core/data_path/rf_inst/result_reg_reg[21]_i_4/O
+                         net (fo=1, routed)           0.638     4.856    core/data_path/pc_inst/result_reg_reg[21]_0
+    SLICE_X71Y92         LUT6 (Prop_lut6_I5_O)        0.316     5.172 r  core/data_path/pc_inst/result_reg[21]_i_2/O
+                         net (fo=7, routed)           1.035     6.207    core/data_path/rf_inst/Result0_inferred__2/i__carry__6[18]
+    SLICE_X78Y89         LUT2 (Prop_lut2_I1_O)        0.124     6.331 r  core/data_path/rf_inst/i__carry__4_i_7/O
+                         net (fo=1, routed)           0.000     6.331    core/data_path/alu_inst/result_reg[20]_i_3[1]
+    SLICE_X78Y89         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     6.864 r  core/data_path/alu_inst/Result0_inferred__2/i__carry__4/CO[3]
+                         net (fo=1, routed)           0.000     6.864    core/data_path/alu_inst/Result0_inferred__2/i__carry__4_n_0
+    SLICE_X78Y90         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.103 f  core/data_path/alu_inst/Result0_inferred__2/i__carry__5/O[2]
+                         net (fo=1, routed)           0.644     7.747    core/data_path/pc_inst/result_reg_reg[27][2]
+    SLICE_X79Y92         LUT6 (Prop_lut6_I1_O)        0.301     8.048 f  core/data_path/pc_inst/result_reg[26]_i_3/O
+                         net (fo=2, routed)           0.765     8.813    core/data_path/pc_inst/result_reg[26]_i_3_n_0
+    SLICE_X79Y93         LUT5 (Prop_lut5_I1_O)        0.124     8.937 f  core/data_path/pc_inst/register_file[19][31]_i_22/O
+                         net (fo=1, routed)           1.172    10.109    core/data_path/pc_inst/register_file[19][31]_i_22_n_0
+    SLICE_X82Y92         LUT6 (Prop_lut6_I3_O)        0.124    10.233 f  core/data_path/pc_inst/register_file[19][31]_i_15/O
+                         net (fo=1, routed)           0.597    10.830    core/data_path/pc_inst/register_file[19][31]_i_15_n_0
+    SLICE_X84Y87         LUT6 (Prop_lut6_I5_O)        0.124    10.954 r  core/data_path/pc_inst/register_file[19][31]_i_6/O
+                         net (fo=22, routed)          0.574    11.529    core/data_path/pc_inst/p_12_in
+    SLICE_X86Y84         LUT6 (Prop_lut6_I2_O)        0.124    11.653 r  core/data_path/pc_inst/register_file[19][31]_i_1/O
+                         net (fo=32, routed)          1.515    13.168    core/data_path/rf_inst/E[0]
+    SLICE_X71Y92         FDCE                                         r  core/data_path/rf_inst/register_file_reg[19][21]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk50_unbuffered rise edge)
+                                                     20.000    20.000 r  
+    E3                                                0.000    20.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000    20.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    21.411 r  clock_input/O
+                         net (fo=1, routed)           1.162    22.573    clk100_buffered
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    15.249 r  clock_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.639    16.888    clk50_unbuffered
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.979 r  processor_clock/O
+                         net (fo=840, routed)         1.511    18.491    core/data_path/rf_inst/clk50
+    SLICE_X71Y92         FDCE                                         r  core/data_path/rf_inst/register_file_reg[19][21]/C
+                         clock pessimism              0.559    19.050    
+                         clock uncertainty           -0.089    18.962    
+    SLICE_X71Y92         FDCE (Setup_fdce_C_CE)      -0.205    18.757    core/data_path/rf_inst/register_file_reg[19][21]
+  -------------------------------------------------------------------
+                         required time                         18.757    
+                         arrival time                         -13.168    
+  -------------------------------------------------------------------
+                         slack                                  5.589    
+
+
+
+
